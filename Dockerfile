@@ -1,6 +1,8 @@
-FROM python:3.8-slim-buster
+FROM python:3.7-slim-buster
 
 RUN apt-get update && apt-get install -y git python3-dev gcc \
+	&& apt-get install -y libgl1-mesa-dev \
+	&& apt-get install -y libopencv-dev \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
