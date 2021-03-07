@@ -21,13 +21,13 @@ masked_gender_detector_file_url  = "https://www.dropbox.com/s/9l8ga1pup9e8jas/ge
 masked_gender_detector_file_name = "gender_mask-model.pkl"
 
 
-non_masked_gender_detector_file_url  = "https://www.dropbox.com/s/tqydjvtwtsa7qrj/gender_no_mask-model.pkl?dl=0"
+non_masked_gender_detector_file_url  = "https://www.dropbox.com/s/tqydjvtwtsa7qrj/gender_no_mask-model.pkl?dl=1"
 non_masked_gender_detector_file_name = "gender_no_mask-model.pkl"
 
 masked_age_file_url = "https://www.dropbox.com/s/ghwjjn7s57ggt3h/age_classifier_mask-model.pkl?dl=1"
 masked_age_file_name = "age_classifier_mask-model.pkl"
 
-non_masked_age_file_url = "https://www.dropbox.com/s/pkpuhp9u1jhl8t0/age_classifier_no_mask-model.pkl?dl=0"
+non_masked_age_file_url = "https://www.dropbox.com/s/pkpuhp9u1jhl8t0/age_classifier_no_mask-model.pkl?dl=1"
 non_masked_age_file_name = "age_classifier_no_mask-model.pkl"
 
 
