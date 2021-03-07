@@ -16,10 +16,12 @@ from utils import *
 export_file_url = 'https://www.dropbox.com/s/xl90ovl3bwgg1ql/mask_detector-model.pkl?dl=1'
 export_file_name = 'mask_detector-model.pkl'
 
+
+
 # classes = ['mask', 'no_mask']
 path = Path(__file__).parent
 
-app = Starlette()
+app = Starlette(debug=True)
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
 app.mount('/static', StaticFiles(directory='app/static'))
 
@@ -48,6 +50,9 @@ async def setup_learner():
             raise
 
 
+res_prototxt = "deploy.prototxt.txt"
+res_model    = "res10_300x300_ssd_iter_140000.caffemodel"
+net = cv2.dnn.readNetFromCaffe(f"app/{res_prototxt}", f"app/{res_model}")
 loop = asyncio.get_event_loop()
 tasks = [asyncio.ensure_future(setup_learner())]
 learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
@@ -63,13 +68,17 @@ async def homepage(request):
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
     img_data = await request.form()
-    print(f"The img_data is {img_data}")
-    img_bytes = await (img_data['file'].read())
-    img = np.array(Image.open(BytesIO(img_bytes)))
-    print(f"The image shape is {img.shape}")
-    prediction = learn.predict(img)[0]
+    print(f"The img_data is {img_data} and type is {type(img_data)}")
+    img_bytes = await (img_data['file'].read()) #bytes data
+    ### checking face detection here
+    pil_image = Image.open(BytesIO(img_bytes)) #get PIL Image
+    opencvImage = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR) #change to CV compatible numpyarray
+    # img = np.array(Image.open(BytesIO(img_bytes))) #NP array of PIL image
+    processed_file = process_image(opencvImage, net)
+    print(f"The processed_file is {processed_file} and type is {type(processed_file)}")
+    # prediction = learn.predict(img)[0]
+    prediction = learn.predict(processed_file)[0]
     print(f"The prediction is {prediction}")
-    # prediction = learn.predict(BytesIO(img_bytes))[0]
     return JSONResponse({'result': str(prediction)})
 
 

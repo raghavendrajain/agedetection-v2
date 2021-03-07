@@ -83,8 +83,9 @@ def get_gender(cls, gend_classes=gender_classes):
 #   Related to the class interpretation   #
 # ======================================= #
 
-def get_face_coordinates(image_file, net, min_confidence):
-    image = cv2.imread(image_file)
+def get_face_coordinates(image, net, min_confidence):
+    # image = cv2.imread(image_file)
+    print(f"Face -coordinates are taken on {type(image)}")
     (h, w) = image.shape[:2]
     blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 1.0, (300, 300), (104.0, 177.0, 123.0))
     net.setInput(blob)
@@ -121,15 +122,15 @@ def get_face_coordinates(image_file, net, min_confidence):
     return retained_box
 
 
-def process_image(image_file, net):
-    dirname = os.path.dirname(image_file)
-    basename_without_ext = os.path.splitext(os.path.basename(image_file))[0]
-    extension = os.path.splitext(os.path.basename(image_file))[1]
-    new_file = dirname + basename_without_ext + '_cropped' + extension
-
-    (x1, y1, x2, y2) = get_face_coordinates(image_file, net, 0.6)
-    image = cv2.imread(image_file)
-    crop_img = image[y1:y2, x1:x2]
+def process_image(image_array, net):
+    # dirname = os.path.dirname(image_file)
+    # basename_without_ext = os.path.splitext(os.path.basename(image_file))[0]
+    # extension = os.path.splitext(os.path.basename(image_file))[1]
+    # new_file = dirname + basename_without_ext + '_cropped' + extension
+    new_file = "test.jpg"
+    (x1, y1, x2, y2) = get_face_coordinates(image_array, net, 0.6)
+    # image = cv2.imread(image_file)
+    crop_img = image_array[y1:y2, x1:x2]
     final_img = image_resize(crop_img, width=400)
     cv2.imwrite(new_file, final_img)
     return new_file
