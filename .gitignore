@@ -1,2 +1,6 @@
+app/AR2_f-model.pkl
+app/AR2_m-model.pkl
+app/gender_mask-model.pkl
+app/gender_no_mask-model.pkl
 app/mask_detector-model.pkl 
 
