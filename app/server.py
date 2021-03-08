@@ -17,6 +17,8 @@ mask_detector_file_url = 'https://www.dropbox.com/s/97ox65x1va6pj4w/mask_detecto
 mask_detector_file_name = 'mask_detector-model.pkl'
 
 
+## old models
+
 # masked_gender_detector_file_url  = "https://www.dropbox.com/s/9l8ga1pup9e8jas/gender_mask-model.pkl?dl=1" 
 # masked_gender_detector_file_name = "gender_mask-model.pkl"
 
