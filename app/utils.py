@@ -131,8 +131,9 @@ def process_image(image_array, net):
     (x1, y1, x2, y2) = get_face_coordinates(image_array, net, 0.6)
     # image = cv2.imread(image_file)
     crop_img = image_array[y1:y2, x1:x2]
-    final_img = image_resize(crop_img, width=400)
-    cv2.imwrite(new_file, final_img)
+    # final_img = image_resize(crop_img, width=400)
+    # cv2.imwrite(new_file, final_img)
+    cv2.imwrite(new_file, crop_img)
     return new_file
 
 

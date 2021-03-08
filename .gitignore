@@ -3,4 +3,9 @@ app/age_classifier_no_mask-model.pkl
 app/gender_mask-model.pkl
 app/gender_no_mask-model.pkl
 app/mask_detector-model.pkl 
+app/updated_age_masked-model.pkl
+app/updated_age_no_mask-model.pkl
+app/updated_gender_masked-model.pkl
+app/updated_gender_no_mask-model.pkl
+
 

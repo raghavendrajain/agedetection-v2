@@ -17,18 +17,35 @@ mask_detector_file_url = 'https://www.dropbox.com/s/97ox65x1va6pj4w/mask_detecto
 mask_detector_file_name = 'mask_detector-model.pkl'
 
 
-masked_gender_detector_file_url  = "https://www.dropbox.com/s/9l8ga1pup9e8jas/gender_mask-model.pkl?dl=1" 
-masked_gender_detector_file_name = "gender_mask-model.pkl"
+# masked_gender_detector_file_url  = "https://www.dropbox.com/s/9l8ga1pup9e8jas/gender_mask-model.pkl?dl=1" 
+# masked_gender_detector_file_name = "gender_mask-model.pkl"
 
 
-non_masked_gender_detector_file_url  = "https://www.dropbox.com/s/tqydjvtwtsa7qrj/gender_no_mask-model.pkl?dl=1"
-non_masked_gender_detector_file_name = "gender_no_mask-model.pkl"
+# non_masked_gender_detector_file_url  = "https://www.dropbox.com/s/tqydjvtwtsa7qrj/gender_no_mask-model.pkl?dl=1"
+# non_masked_gender_detector_file_name = "gender_no_mask-model.pkl"
 
-masked_age_file_url = "https://www.dropbox.com/s/ghwjjn7s57ggt3h/age_classifier_mask-model.pkl?dl=1"
-masked_age_file_name = "age_classifier_mask-model.pkl"
+# masked_age_file_url = "https://www.dropbox.com/s/ghwjjn7s57ggt3h/age_classifier_mask-model.pkl?dl=1"
+# masked_age_file_name = "age_classifier_mask-model.pkl"
 
-non_masked_age_file_url = "https://www.dropbox.com/s/pkpuhp9u1jhl8t0/age_classifier_no_mask-model.pkl?dl=1"
-non_masked_age_file_name = "age_classifier_no_mask-model.pkl"
+# non_masked_age_file_url = "https://www.dropbox.com/s/pkpuhp9u1jhl8t0/age_classifier_no_mask-model.pkl?dl=1"
+# non_masked_age_file_name = "age_classifier_no_mask-model.pkl"
+
+
+
+### Updated models
+
+masked_gender_detector_file_url  = "https://www.dropbox.com/s/mp6ncnah62x1jj5/updated_gender_masked-model.pkl?dl=1" 
+masked_gender_detector_file_name = "updated_gender_masked-model.pkl"
+
+
+non_masked_gender_detector_file_url  = "https://www.dropbox.com/s/siqbrv0za51ruo6/updated_gender_no_mask-model.pkl?dl=1"
+non_masked_gender_detector_file_name = "updated_gender_no_mask-model.pkl"
+
+masked_age_file_url = "https://www.dropbox.com/s/avlhctetrb8xprn/updated_age_masked-model.pkl?dl=1"
+masked_age_file_name = "updated_age_masked-model.pkl"
+
+non_masked_age_file_url = "https://www.dropbox.com/s/p9uj2kfl8264ac4/updated_age_no_mask-model.pkl?dl=1"
+non_masked_age_file_name = "updated_age_no_mask-model.pkl"
 
 
 # classes = ['mask', 'no_mask']
@@ -158,7 +175,7 @@ async def analyze(request):
     ### checking face detection here
     pil_image = Image.open(BytesIO(img_bytes)) #get PIL Image
     opencvImage = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR) #change to CV compatible numpyarray
-    # img = np.array(Image.open(BytesIO(img_bytes))) #NP array of PIL image
+    # # img = np.array(Image.open(BytesIO(img_bytes))) #NP array of PIL image
     processed_file = process_image(opencvImage, net)
     # print(f"The processed_file is {processed_file} and type is {type(processed_file)}")
     # prediction = learn.predict(img)[0]
