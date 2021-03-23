@@ -7,5 +7,10 @@ app/updated_age_masked-model.pkl
 app/updated_age_no_mask-model.pkl
 app/updated_gender_masked-model.pkl
 app/updated_gender_no_mask-model.pkl
+app/all_inferemnce.py
+app/celeb.pkl
+app/deepfashion2.pkl
+app/emotions.pkl
+app/gender+ethnicity.pkl
 
 
